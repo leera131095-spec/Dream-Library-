@@ -1,0 +1,266 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #faf5ff;
+  --foreground: #3b2751;
+  --card: rgba(255, 255, 255, 0.45);
+  --card-foreground: #3b2751;
+  --popover: rgba(255, 255, 255, 0.7);
+  --popover-foreground: #3b2751;
+  --primary: #c084b8;
+  --primary-foreground: #faf5ff;
+  --secondary: #f0e6f6;
+  --secondary-foreground: #3b2751;
+  --muted: #f5eef9;
+  --muted-foreground: #7c6892;
+  --accent: #e8b4b8;
+  --accent-foreground: #3b2751;
+  --destructive: #e57373;
+  --destructive-foreground: #ffffff;
+  --border: rgba(192, 132, 184, 0.2);
+  --input: rgba(192, 132, 184, 0.15);
+  --ring: #c084b8;
+  --chart-1: #c084b8;
+  --chart-2: #e8b4b8;
+  --chart-3: #a7c7e7;
+  --chart-4: #d4a843;
+  --chart-5: #b8a9c9;
+  --radius: 1rem;
+  --sidebar: rgba(255, 255, 255, 0.35);
+  --sidebar-foreground: #3b2751;
+  --sidebar-primary: #c084b8;
+  --sidebar-primary-foreground: #faf5ff;
+  --sidebar-accent: rgba(192, 132, 184, 0.15);
+  --sidebar-accent-foreground: #3b2751;
+  --sidebar-border: rgba(192, 132, 184, 0.15);
+  --sidebar-ring: #c084b8;
+
+  --enchanted-lavender: #c9b8db;
+  --enchanted-blush: #f2c4c8;
+  --enchanted-blue: #a7c7e7;
+  --enchanted-gold: #d4a843;
+  --enchanted-rose: #e8b4b8;
+}
+
+@theme inline {
+  --font-sans: var(--font-dm-sans), 'DM Sans', sans-serif;
+  --font-serif: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  --font-mono: 'Geist Mono', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-enchanted-lavender: var(--enchanted-lavender);
+  --color-enchanted-blush: var(--enchanted-blush);
+  --color-enchanted-blue: var(--enchanted-blue);
+  --color-enchanted-gold: var(--enchanted-gold);
+  --color-enchanted-rose: var(--enchanted-rose);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Floating particles animation */
+@keyframes float-up {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(192, 132, 184, 0.3), 0 0 30px rgba(192, 132, 184, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(192, 132, 184, 0.5), 0 0 50px rgba(192, 132, 184, 0.2);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-float-up {
+  animation: float-up linear infinite;
+}
+
+.animate-sparkle {
+  animation: sparkle ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-sidebar {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.enchanted-bg {
+  background: linear-gradient(135deg, #faf5ff 0%, #f0e6f6 25%, #fce4ec 50%, #e8eaf6 75%, #fff8e1 100%);
+  background-size: 400% 400%;
+  animation: enchanted-gradient 15s ease infinite;
+}
+
+@keyframes enchanted-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.enchanted-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.enchanted-button::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, #c9b8db, #f2c4c8, #a7c7e7, #d4a843);
+  background-size: 300% 300%;
+  animation: enchanted-gradient 4s ease infinite;
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.enchanted-button:hover::before {
+  opacity: 1;
+}
+
+.enchanted-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(192, 132, 184, 0.3);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(192, 132, 184, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(192, 132, 184, 0.5);
+}
+
+/* Shimmer text effect */
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #3b2751 0%,
+    #c084b8 25%,
+    #d4a843 50%,
+    #c084b8 75%,
+    #3b2751 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
